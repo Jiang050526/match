@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.equal-width-container {
+    margin-top: 80px;
+    height: auto; /* 改为自动高度以适应内容 */
+    min-height: 350px; /* 最小高度 */
+    width: 100%;
+    max-width: 1600px; /* 添加最大宽度限制 */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    margin-bottom: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.equal-width-container:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.left-section, .right-section {
+    flex: 1;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.left-section {
+    background-color: #ffffff;
+    border-right: 1px solid #eaeaea;
+}
+
+.right-section {
+    background-color: #f5f7fa;
+}
+
+/* 标题样式 */
+.left-section h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 10px;
+}
+
+/* 内容文本样式 */
+.left-section p {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+/* 右侧内容样式 */
+.right-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-section p {
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 6px;
+    border-left: 4px solid #3498db;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .equal-width-container {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .left-section, .right-section {
+        flex: none;
+        width: 100%;
+    }
+    
+    .left-section {
+        border-right: none;
+        border-bottom: 1px solid #eaeaea;
+    }
+}
+
+* 顶部轮播样式 */
+.top-slider {
+    margin-top: 80px ;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.slider-container {
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+.top-slider .slide {
+    margin-top: 78px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 1s ease;
+    transform: scale(1);
+}
+
+.top-slider .slide.active {
+    opacity: 1;
+    animation: zoomIn 8s infinite alternate;
+}
+
+.top-slider .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+    .three-equal-columns {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    gap: 10px;
+}
+
+.column {
+    flex: 1;
+    height: 550px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+/* 每个栏目内的轮播内容 */
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* 每个栏目的颜色 */
+.column:nth-child(1) .slide { background-color: none; }
+.column:nth-child(2) .slide { background-color: none; }
+.column:nth-child(3) .slide { background-color: none; }
+
+/* 导航箭头样式 */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 16px;
+    user-select: none;
+    transition: background-color 0.3s;
+}
+
+.nav-arrow:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* 指示器 */
+.indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.indicator.active {
+    background-color: rgba(0,0,0,0.7);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .three-equal-columns {
+        flex-direction: column;
+    }
+    .column {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .nav-arrow {
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+    }
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: rgba(245, 222, 179, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  z-index: 1000;
+}
+.logo {
+  margin-left: 20px;
+  width: 40px;
+  height: 40px;
+  background: url("images/logo1.png") no-repeat center center; 
+  background-size: contain;
+  border-radius: 50%;
+}
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+.nav-links li {
+  margin: 0 10px;
+}
+.nav-links a {
+  font-size: 16px;
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+}
+.nav-links a:hover {
+  color: #f5deb3;
+}
+    </style>
+    <title>show1</title>
+</head>
+<body background="images/login1.jpg">
+    <div class="navbar">
+        <div class="logo"></div>
+        <ul class="nav-links">
+            <li><a href="index1.html">首页</a></li>
+            <li><a href="index3.html">中华古籍保护与传承概览</a></li>
+            <li><a href="index2.html">中国基本古籍库的分类体系与价值</a></li>
+        </ul>
+    </div>
+    <div class="top-slider">
+        <div class="slider-container">
+            <div class="slide active">
+                <img src="images/show1.png" alt="#">
+            </div>
+            <div class="slide">
+                <img src="images/shwo1_3.png" alt="#">
+            </div>
+            <div class="slide">
+                <img src="images/show1_1.png" alt="#">
+            </div>
+        </div>
+    </div>
+    <div class="equal-width-container">
+        <div class="left-section">
+            <h2>中国基本古籍库的总体架构</h2>
+            <p>中国基本古籍库是中国学术界对传统典籍进行系统性整理和数字化的重要工程，其分类体系体现了对中华文化典籍的科学认知和系统把握。
+                该古籍库将浩如烟海的典籍资源划分为4个子库、20个大类和100个细目，构建了一个层次分明、逻辑严密的分类架构。
+                这种多维度的分类方法既考虑了传统四部分类法的历史传承，又融入了现代学科分类的理性思维，形成了独具特色的古籍资源组织体系。
+                通过这种精细化的分类，不仅方便学者和研究人员的检索利用，更有助于从宏观上把握中国古籍的全貌和内在联系。</p>
+                <h2>4个子库及20个子类</h2>
+            <p>中国基本古籍库首先将全部典籍资源划分为4个主要子库，这一顶层设计反映了对古籍文献性质的深刻理解。
+                这4个子库分别是：经部子库、史部子库、子部子库和集部子库，基本沿袭了中国传统目录学中的"四部分类法"。
+                在4个子库之下，中国基本古籍库进一步细分为20个大类，这一中间层次的分类既考虑了学科属性，又兼顾了文献类型特点。
+                经部子库下分易类、书类、诗类、礼类、春秋类等；史部子库包括正史类、编年类、纪事本末类、别史类等；
+                子部子库涵盖儒家类、兵家类、法家类、农家类等；集部子库则分楚辞类、别集类、总集类、诗文评类等。</p>
+        </div>
+        <div class="right-section">
+            <h2>100个细目的精细分类</h2>
+            <p>在最具体的操作层面，中国基本古籍库设置了100个细目，这一精细分类使数十万种古籍能够各得其所、井然有序。
+                这些细目既有按时代划分的（如"汉魏六朝别集"、"唐五代别集"），也有按体裁划分的（如"奏议"、"传记"），
+                还有按内容划分的（如"金石"、"书画"）。100个细目的设置充分考虑了古籍文献的实际状况和研究者的使用习惯。
+                例如，在"地理"大类下细分出"总志"、"都会郡县"、"山水志"、"游记"等细目；在"艺术"大类下则设有"书画"、"琴谱"、"篆刻"等细目。
+                这种精细分类极大提高了检索效率，使用者可以快速定位到特定领域的文献资源，也为专题研究提供了系统性的文献支持。</p>
+            <h2>分类体系的特点与价值</h2>
+            <p>中国基本古籍库"4个子库-20个大类-100个细目"的分类体系具有鲜明的特点和重要的学术价值。
+                首先，它体现了传统与现代的结合，既继承了四部分类法的合理内核，又吸收了现代图书分类法的科学精神。
+                其次，它实现了系统性与灵活性的统一，三级分类结构既保证了体系的完整性，又为各类文献提供了适当的归类空间。
+                再次，它反映了学科与文献类型的兼顾，既考虑知识内容的学科属性，也关注文献本身的体裁特点。</p>
+        </div>
+    </div> 
+    <div class="three-equal-columns">
+        <!-- 第一栏 -->
+        <div class="column" data-column="0">
+            <div class="slide active">
+                <img src="images/show1_1.jpg" height="350px" width="350px" alt="#">
+            </div>
+            <div class="slide">
+                <img src="images/show1_2.jpg" height="350px" width="350px" alt="#">
+            </div>
+            <div class="slide">
+                <img src="images/show1_3.jpg" height="350px" width="350px" alt="#">
+            </div>
+            <div class="nav-arrow prev">‹</div>
+            <div class="nav-arrow next">›</div>
+            <div class="indicators">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
+            </div>
+        </div>
+
+        <!-- 第二栏 -->
+        <div class="column" data-column="1">
+            <div class="slide active">
+                <img src="images/show1_4.jpg" height="350px" width="350px" alt="#">
+            </div>
+            <div class="slide">
+                <img src="images/show1_5.jpg" height="350px" width="350px" alt="#">
+            </div>
+            <div class="slide">
+                <img src="images/show1_6.jpg" height="350px" width="350px" alt="#">
+            </div>
+            <div class="nav-arrow prev">‹</div>
+            <div class="nav-arrow next">›</div>
+            <div class="indicators">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
+            </div>
+        </div>
+
+        <!-- 第三栏 -->
+        <div class="column" data-column="2">
+            <div class="slide active">
+                <img src="images/show1_7.jpg" height="350px" width="350px" alt="#">
+            </div>
+            <div class="slide">
+                <img src="images/show1_8.jpg" height="350px" width="350px" alt="#">
+            </div>
+            <div class="slide">
+                <img src="images/show1_9.jpg" height="350px" width="350px" alt="#">
+            </div>
+            <div class="nav-arrow prev">‹</div>
+            <div class="nav-arrow next">›</div>
+            <div class="indicators">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // ================= 顶部轮播逻辑（无导航控件）=================
+    const topSlider = document.querySelector('.top-slider .slider-container');
+    if (topSlider) {
+        const topSlides = topSlider.querySelectorAll('.slide');
+        let topCurrentIndex = 0;
+        let topInterval;
+        
+        function startTopSlider() {
+            // 初始激活第一张
+            topSlides[topCurrentIndex].classList.add('active');
+            
+            topInterval = setInterval(() => {
+                // 1. 先淡出当前图片
+                topSlides[topCurrentIndex].classList.remove('active');
+                
+                // 2. 短暂延迟创建闪烁效果
+                setTimeout(() => {
+                    // 3. 计算下一张索引
+                    topCurrentIndex = (topCurrentIndex + 1) % topSlides.length;
+                    
+                    // 4. 激活新图片（会触发CSS动画）
+                    topSlides[topCurrentIndex].classList.add('active');
+                    
+                    // 5. 重置缩放动画（确保每次切换都有动画）
+                    void topSlides[topCurrentIndex].offsetWidth; // 触发重绘
+                    topSlides[topCurrentIndex].style.animation = 'none';
+                    setTimeout(() => {
+                        topSlides[topCurrentIndex].style.animation = '';
+                    }, 10);
+                }, 300); // 闪烁间隔时间
+            }, 3000); // 轮播间隔时间（3秒）
+        }
+        
+        // 初始化顶部轮播
+        startTopSlider();
+        
+        // 鼠标悬停暂停
+        topSlider.addEventListener('mouseenter', () => {
+            clearInterval(topInterval);
+        });
+        
+        // 鼠标离开恢复
+        topSlider.addEventListener('mouseleave', () => {
+            startTopSlider();
+        });
+    }
+    
+    // ================= 原有的三栏轮播逻辑 =================
+    const columns = document.querySelectorAll('.column');
+    
+    columns.forEach(column => {
+        const slides = column.querySelectorAll('.slide');
+        const prevBtn = column.querySelector('.prev');
+        const nextBtn = column.querySelector('.next');
+        const indicators = column.querySelectorAll('.indicator');
+        let currentIndex = 0;
+        let interval;
+        
+        // 初始化
+        startAutoSlide();
+        
+        // 上一张按钮
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            prevSlide();
+            resetAutoSlide();
+        });
+        
+        // 下一张按钮
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nextSlide();
+            resetAutoSlide();
+        });
+        
+        // 指示器点击
+        indicators.forEach(indicator => {
+            indicator.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const index = parseInt(indicator.getAttribute('data-index'));
+                goToSlide(index);
+                resetAutoSlide();
+            });
+        });
+        
+        function nextSlide() {
+            goToSlide((currentIndex + 1) % slides.length);
+        }
+        
+        function prevSlide() {
+            goToSlide((currentIndex - 1 + slides.length) % slides.length);
+        }
+        
+        function goToSlide(index) {
+            slides[currentIndex].classList.remove('active');
+            indicators[currentIndex].classList.remove('active');
+            
+            currentIndex = index;
+            
+            slides[currentIndex].classList.add('active');
+            indicators[currentIndex].classList.add('active');
+        }
+        
+        function startAutoSlide() {
+            interval = setInterval(nextSlide, 2500); // 1.5秒切换
+        }
+        
+        function resetAutoSlide() {
+            clearInterval(interval);
+            startAutoSlide();
+        }
+        
+        // 鼠标悬停暂停
+        column.addEventListener('mouseenter', () => {
+            clearInterval(interval);
+        });
+        
+        // 鼠标离开恢复
+        column.addEventListener('mouseleave', () => {
+            resetAutoSlide();
+        });
+    });
+});
+    </script>
+</body>
+</html>
