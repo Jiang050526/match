@@ -3,117 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>    
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 70px;
-  background: rgba(245, 222, 179, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 0;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
-  border-radius: 10px;
-  z-index: 1000;
-}
-.logo {
-  margin-left: 20px;
-  width: 40px;
-  height: 40px;
-  background: url("images/logo1.png") no-repeat center center; 
-  background-size: contain;
-  border-radius: 50%;
-}
-.nav-links {
-  display: flex;
-  list-style: none;
-}
-.nav-links li {
-  margin: 0 10px;
-}
-.nav-links a {
-  font-size: 16px;
-  text-decoration: none;
-  color: #333;
-  transition: color 0.3s ease;
-}
-.nav-links a:hover {
-  color: #f5deb3;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    <style>
+    /* 重置样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
 
-body {
-  height: 850px;
-  display: flex;
-  flex-direction: column;
-  background-color: #f0e9dd;
-}
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .left_box, .right_box, .box, .box_4 ,.box_5,.box_6 {
+        width: 100%;
+      }
+    }
 
-.full-height-box {
-  margin-top: 100px;
-  flex: 1;
-  border: 4px solid #000;
-  background-color: #f0e9dd;
-  overflow: auto;
-  margin-left: 75px;
-  margin-right: 75px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; /* 允许盒子换行 */
-  gap: 10px;
-  padding: 5px;
-  align-content: flex-start; /* 从顶部开始排列 */
-}
+    /* 主要样式 */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background: rgba(245, 222, 179, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      z-index: 1000;
+    }
+    .logo {
+      width: 40px;
+      height: 40px;
+      background: url("images/logo1.png") no-repeat center center; 
+      background-size: contain;
+      border-radius: 50%;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin-right: 600px;
+    }
+    .nav-links li {
+      margin: 0 10px;
+    }
+    .nav-links a {
+      font-size: 16px;
+      text-decoration: none;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: #f5deb3;
+    }
 
-.left_box {
-  width: 900px;
-  height: 365px;
-  overflow: auto;
-  margin-top: 18px;
-  background-color: #f0e9dd;
-  flex-shrink: 0;
-}
+    body {
+      height: 1350px;
+      display: flex;
+      flex-direction: column;
+      background-color: #f0e9dd;
+    }
 
-.right_box {
-  width: 569px;
-  height: 365px;
-  margin-top: 18px;
-  text-align: center;
-  overflow: auto;
-  background-color: #f0e9dd;
-  flex-shrink: 0;
-}
+    .full-height-box {
+      margin-top: 100px;
+      flex: 1;
+      border: 4px solid #000;
+      background-color: #f0e9dd;
+      overflow: auto;
+      margin-left: 75px;
+      margin-right: 75px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap; /* 允许盒子换行 */
+      gap: 10px;
+      padding: 5px;
+      align-content: flex-start; /* 从顶部开始排列 */
+    }
 
-/* 新增的盒子样式 */
-.box {
-  width: 300px; /* 根据需要调整宽度 */
-  height: 280px; /* 根据需要调整高度 */
-  background-color: #f0e9dd;
-  flex-shrink: 0;
-  overflow: auto;
-}
+    .left_box {
+      width: 57%; /* 使用百分比宽度 */
+      height: auto; /* 高度自适应 */
+      overflow: auto;
+      margin-top: 18px;
+      background-color: #f0e9dd;
+      flex-shrink: 0;
+    }
 
-.box_4 {
-  width: 595px; /* 根据需要调整宽度 */
-  height: 280px; /* 根据需要调整高度 */
-  background-color: #f0e9dd;
-  flex-shrink: 0;
-  overflow: auto;
-}
+    .right_box {
+      width: 40%; /* 使用百分比宽度 */
+      margin-left: 10px;
+      height: auto; /* 高度自适应 */
+      margin-top: 18px;
+      text-align: center;
+      overflow: auto;
+      background-color: #f0e9dd;
+      flex-shrink: 0;
+    }
 
-/* 内容样式示例 */
-.full-height-box p {
-  padding: 20px;
-  font-size: 16px;
-}
+    .box {
+      width: 18%; /* 根据需要调整宽度 */
+      height: 370px; /* 根据需要调整高度 */
+      background-color: #f0e9dd;
+      flex-shrink: 0;
+      overflow: auto;
+    }
+
+    .box_4 {
+      width: 40%; /* 调整宽度为48% */
+      height: 370px; /* 根据需要调整高度 */
+      background-color: #f0e9dd;
+      flex-shrink: 0;
+      overflow: auto;
+    }
+
+    .box_5 {
+      width: 48%; /* 根据需要调整宽度 */
+      height: 395px; /* 根据需要调整高度 */
+      background-color: #f0e9dd;
+      flex-shrink: 0;
+      overflow: auto;
+    }
+
+    .box_6 {
+      width: 48%; /* 根据需要调整宽度 */
+      height: 395px; /* 根据需要调整高度 */
+      background-color: #f0e9dd;
+      flex-shrink: 0;
+      overflow: auto;
+    }
+
+    /* 图片自适应 */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* 内容样式示例 */
+    .full-height-box p {
+      padding: 20px;
+      font-size: 16px;
+    }
     </style>
     <title>中华古籍保护与传承概览</title>
 </head>
@@ -128,7 +164,7 @@ body {
     </div>
     <div class="full-height-box">
       <div class="left_box">
-        <center><h2>中华古籍之美</h2>
+        <center><h2>中华古籍之美</h2></center>
         <p>新中国成立后，党和政府制定了一系列保护古籍的法规制度，对古籍进行集中调拨、统一保存，并投入大量人力和资金征集散落民间的善本，
           初步建立了以各级各类图书馆为主体的古籍保存体系，同时着手实施《赵城金藏》《敦煌遗书》《永乐大典》及西夏文献等一系列大型珍贵古籍的修复项目。
           为摸清家底，各大图书馆陆续编印了一批馆藏古籍善本书目，如《北京图书馆善本书目》《北京大学图书馆善本书目》《上海图书馆善本书目》
@@ -143,42 +179,50 @@ body {
         <img src="images/show2_1.png" alt="" style="width: 100%; height: auto;">
       </div>
       <div class="box">
-        <img src="images/show2_2.png" width="300px" height="260px">
+        <img src="images/show2_2.png" style="width: 100%; height: auto;">
       </div>
       <div class="box_4">
-      <center>唐代（618-907）</center>
-      经部（15%）：儒家经典整理初具规模，但安史之乱后损毁严重。</br>
-      史部（20%）：官方修史（如《贞观政要》）留存较多。</br>
-     子部（10%）：佛教、道教典籍占比低（敦煌遗书未计入）。</br>
-      集部（25%）：诗歌（唐诗）繁荣，个人文集传世较多。</br>
-      特点：以“集部”为主导，反映文学鼎盛；子部薄弱。</br>
-      <center>宋代（960-1279）</center>
-      经部（25%）：理学兴起（朱熹注经），印刷术推动经典普及。</br>
-      史部（30%）：官方修史（《资治通鉴》）和私家史书（如笔记）并存。</br>
-      子部（15%）：科技（《梦溪笔谈》）、医学著作增加。</br>
-      集部（30%）：宋词、文人文集（如苏轼全集）盛行。</br>
-      特点：四部均衡发展，史部与集部并重。</br>
+        唐代（618-907）
+        <p>经部（15%）：儒家经典整理初具规模，但安史之乱后损毁严重。</br>
+        史部（20%）：官方修史（如《贞观政要》）留存较多。</br>
+        子部（10%）：佛教、道教典籍占比低（敦煌遗书未计入）。</br>
+        集部（25%）：诗歌（唐诗）繁荣，个人文集传世较多。</br>
+        特点：以“集部”为主导，反映文学鼎盛；子部薄弱。</br></p>
+        宋代（960-1279）</br>
+        <p>经部（25%）：理学兴起（朱熹注经），印刷术推动经典普及。</br>
+        史部（30%）：官方修史（《资治通鉴》）和私家史书（如笔记）并存。</br>
+        子部（15%）：科技（《梦溪笔谈》）、医学著作增加。</br>
+        集部（30%）：宋词、文人文集（如苏轼全集）盛行。</br>
+        特点：四部均衡发展，史部与集部并重。</br></p>
       </div>
       <div class="box_4">
-        <center>元代（1271-1368）</center>
-          经部（10%）：科举中断，儒家经典研究衰退。</br>
-          史部（15%）：官修《宋史》《辽史》《金史》，但民间史学弱。</br>
-          子部（20%）：戏曲（元杂剧）、医学（《饮膳正要》）突出。</br>
-          集部（15%）：散曲、文人诗集留存较少。</br>
-          特点：子部占比最高，反映市民文化兴起；经史衰落。</br>
-        <center>明代（1368-1644）</center>
-          经部（30%）：科举制度化，八股文推动经学复兴。</br>
-          史部（25%）：方志（《永乐大典》辑录）、野史盛行。</br>
-          子部（25%）：科技（《天工开物》）、小说（《西游记》手稿）。</br>
-          集部（20%）：戏曲、文人小品文比例下降。</br>
-          特点：经部强势，子部科技与文学并重。</br>
-          <center>清代（1636-1912）</center>
-经部（20%）：考据学（乾嘉学派）成果丰富。</br>
-史部（10%）：文字狱导致私史凋零，官修《四库全书》主导。</br>
-子部（30%）：学术笔记（《日知录》）、科学译著（《几何原本》）。</br>
-集部（10%）：小说（《红楼梦》）未被官方重视，留存有限。</br>
-特点：子部占比最高，反映学术多元化；集部受压制。</br>
-        </div>
-  </div>
+        元代（1271-1368）
+        <p>经部（10%）：科举中断，儒家经典研究衰退。</br>
+        史部（15%）：官修《宋史》《辽史》《金史》，但民间史学弱。</br>
+        子部（20%）：戏曲（元杂剧）、医学（《饮膳正要》）突出。</br>
+        集部（15%）：散曲、文人诗集留存较少。</br>
+        特点：子部占比最高，反映市民文化兴起；经史衰落。</br></p>
+        明代（1368-1644）</br>
+        <p>经部（30%）：科举制度化，八股文推动经学复兴。</br>
+        史部（25%）：方志（《永乐大典》辑录）、野史盛行。</br>
+        子部（25%）：科技（《天工开物》）、小说（《西游记》手稿）。</br>
+        集部（20%）：戏曲、文人小品文比例下降。</br>
+        特点：经部强势，子部科技与文学并重。</br></p>
+      </div>
+      <div class="box_5">
+        清代（1636-1912）</br>
+        <p>经部（20%）：考据学（乾嘉学派）成果丰富。</br>
+        史部（10%）：文字狱导致私史凋零，官修《四库全书》主导。</br>
+        子部（30%）：学术笔记（《日知录》）、科学译著（《几何原本》）。</br>
+        集部（10%）：小说（《红楼梦》）未被官方重视，留存有限。</br>
+        特点：子部占比最高，反映学术多元化；集部受压制。</br></p>
+        </br></br><p>这张词云图展示了与“中华古籍保护与传承”相关的一系列关键词，
+          其中词语的大小通常表示其重要性或出现频率。通过视觉化的方式，
+          帮助我们快速识别和理解文本数据中的关键信息。
+          在这张图中，我们可以看到苏轼和王安石在中华古籍保护与传承中占有非常重要的地位。</p>
+      </div>
+      <div class="box_6">
+        <img src="images/show2_3.png" alt="" style="width: 100%; height: auto;">
+    </div>
 </body>
 </html>
